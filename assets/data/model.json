@@ -1,0 +1,48 @@
+[
+    {
+        "marka": "Mercedes",
+        "ulke": "Almanya",
+        "kurulus_tarihi": 1890,
+        "model": [
+            {
+                "araba_model": "A Serisi",
+                "fiyati": 11000,
+                "benzinli": true
+            },
+            {
+                "araba_model": "C Serisi",
+                "fiyati": 9000,
+                "benzinli": false
+            }
+        ]
+    },
+    {
+        "marka": "Honda",
+        "ulke": "Japonya",
+        "kurulus_tarihi": 1960,
+        "model": [
+            {
+                "araba_model": "Civic",
+                "fiyati": 10000,
+                "benzinli": true
+            }
+        ]
+    },
+    {
+        "marka": "Renault",
+        "ulke": "Almanya",
+        "kurulus_tarihi": 1900,
+        "model": [
+            {
+                "araba_model": "Fluence Serisi",
+                "fiyati": 11000,
+                "benzinli": false
+            },
+            {
+                "araba_model": "Clio Serisi",
+                "fiyati": 8000,
+                "benzinli": true
+            }
+        ]
+    }
+]
