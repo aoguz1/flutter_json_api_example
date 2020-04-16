@@ -58,9 +58,7 @@ class MyHomePagePage extends StatelessWidget {
               ),
 
 
-              RaisedButton(onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>JsonApiWiew()));
-              },child: Text("Deneme Remote Api"),)
+              
             ],
           ),
         ),
