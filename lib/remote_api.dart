@@ -41,7 +41,7 @@ class _RemoteApiState extends State<RemoteApi> {
         title: Text("Remote Json"),
       ),
       body: Container(
-        child: FutureBuilder(
+        child: FutureBuilder(  // Future builder  bize future tipindeki fonksiyon veya işlemlerle çalıştığımızda , kendi içindeki yapılar ile verileri kolayca alıp onları üzerinde "hasData vb " özellikleri kullanabilmemizi sağlar.
           future: httpVeriOku(),
           builder: (BuildContext context, AsyncSnapshot<List<Post>> sonuc) {
             // future'ye verdiğimiz değerden gelen veriler buradaki "sonuc" isimli değişkene geleir
@@ -64,6 +64,10 @@ class _RemoteApiState extends State<RemoteApi> {
             }
           },
         ),
+
+        
+
+
       ),
     );
   }
