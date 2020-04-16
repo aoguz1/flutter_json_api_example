@@ -21,4 +21,6 @@ class Post {
     data['body'] = this.body;
     return data;
   }
+
+  
 }

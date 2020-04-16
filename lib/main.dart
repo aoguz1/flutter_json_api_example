@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutterlearn_json_api/json_api.dart';
 import 'package:flutterlearn_json_api/local_json.dart';
 import 'package:flutterlearn_json_api/models/araba_model.dart';
 import 'package:flutterlearn_json_api/local_json.dart';
@@ -18,15 +19,12 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: "Flutter API",
       home: MyHomePagePage(),
-
     );
   }
 }
-
-
-
 
 class MyHomePagePage extends StatelessWidget {
   const MyHomePagePage({Key key}) : super(key: key);
@@ -45,15 +43,24 @@ class MyHomePagePage extends StatelessWidget {
               RaisedButton(
                 color: Colors.orange,
                 onPressed: () {
-                 Navigator.of(context).push(MaterialPageRoute(builder: (context)=>LocalJson()));
-
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => LocalJson()));
                 },
                 child: Text("Local API"),
               ),
+              RaisedButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => RemoteApi()));
+                },
+                child: Text("Remote API"),
+                color: Colors.amber,
+              ),
+
 
               RaisedButton(onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>RemoteApi()));
-              },child: Text("Remote API"),color: Colors.amber,)
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>JsonApiWiew()));
+              },child: Text("Deneme Remote Api"),)
             ],
           ),
         ),

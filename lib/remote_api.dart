@@ -17,6 +17,12 @@ class _RemoteApiState extends State<RemoteApi> {
   Post post;
 
   Future<List<Post>> httpVeriOku() async {
+
+ //   return Post.fromJson((json.decode(jsonOku.body))); tek json demetimiz varsa fonksiyona gönderip decode edebiliriz.
+
+
+//----
+    
     // çektiğimiz json dosyasının birden fazla verisi oldığu için bu verileri parçalayıp bir listeye aktardık. Fonksiyonda döndüreceğimiz değeri belirttik.
     var veriOku = await http.get("https://jsonplaceholder.typicode.com/posts");
     if (veriOku.statusCode == 200) {
@@ -31,33 +37,34 @@ class _RemoteApiState extends State<RemoteApi> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Remote Json"),
+      appBar: AppBar(
+        title: Text("Remote Json"),
+      ),
+      body: Container(
+        child: FutureBuilder(
+          future: httpVeriOku(),
+          builder: (BuildContext context, AsyncSnapshot<List<Post>> sonuc) {
+            // future'ye verdiğimiz değerden gelen veriler buradaki "sonuc" isimli değişkene geleir
+            if (sonuc.hasData) {
+              // sonucun içinde veri olması halinde yapılacak işlemler burada yazılır.
+              return ListView.builder(
+                itemCount: sonuc.data.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return ListTile(
+                      title: Text(sonuc.data[index].title),
+                      leading: CircleAvatar(
+                        child: Text(sonuc.data[index].id.toString()),
+                      ));
+                },
+              );
+            } else {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+          },
         ),
-        body: Container(
-          child: FutureBuilder(
-            future: httpVeriOku(),
-            builder: (BuildContext context, AsyncSnapshot<List<Post>> sonuc) {
-              // future'ye verdiğimiz değerden gelen veriler buradaki "sonuc" isimli değişkene geleir
-              if (sonuc.hasData) {
-                // sonucun içinde veri olması halinde yapılacak işlemler burada yazılır.
-                return ListView.builder(
-                  itemCount: sonuc.data.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return ListTile(
-                        title: Text(sonuc.data[index].title),
-                        leading: CircleAvatar(
-                          child: Text(sonuc.data[index].id.toString()),
-                        ));
-                  },
-                );
-              } else {
-                return Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
-            },
-          ),
-        ));
+      ),
+    );
   }
 }
